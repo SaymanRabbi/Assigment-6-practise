@@ -28,11 +28,6 @@ function updatePrice(idName,price) {
 //         totalPrice.innerText = (totalPrice * 20) / 100;
 //     }
 // }
-
-document.getElementById('promo-code').addEventListener('click', function () {
-    let pinGenerator = document.getElementById('pin-generator');
-    pinGenerator.style.display = 'block'
-})
 function pinGenerator() {
     let pin = Math.round(Math.random() * 10000)
     let pinLength = pin + '';
@@ -43,33 +38,38 @@ function pinGenerator() {
         return pinGenerator();
     }
 }
-let pinInput = document.getElementById('pin-input');
-document.getElementById('generate-pin').addEventListener('click', function () {
-    pinInput.value = pinGenerator();
+let pinInput = document.getElementById('pin');
+let pinBody = document.getElementById('pin-body');
+document.getElementById('promo-code').addEventListener('click', function () {
+    pinBody.style.display = 'block';
+    pinInput.innerText = pinGenerator();
 })
 
 document.getElementById('apply-btn').addEventListener('click', function () {
-    let promoInput = document.getElementById('promo-input');
+    let promoInput = document.getElementById('promo-input').value;
     let totalPrice = document.getElementById('total-price');
     let appliedText = document.getElementById('applied-text');
     let couldNot = document.getElementById('couldnot');
-    if (promoInput.value === pinInput.value) {
-        promoInput.value = '';
-        if (parseFloat(totalPrice.innerText)>1500) {
+    console.log(parseFloat(totalPrice.innerText))
+    if (parseFloat(totalPrice.innerText) > 1500) {
+        debugger;
+        if (parseFloat(parseFloat(promoInput)) === parseFloat(pinInput.innerText)) {
             let discount = (parseFloat(totalPrice.innerText) * 10)/100;
             totalPrice.innerText = parseFloat(totalPrice.innerText) - discount;
-            console.log(appliedText);
             appliedText.style.display = 'block';
             couldNot.style.display = 'none'
+            promoInput.value = '';
         }
         else {
-            couldNot.innerText = "Buy More Than 1500$"
             appliedText.style.display = 'none';
             couldNot.style.display = 'block'
+            couldNot.innerText = "Couldn't apply coupon";
         }
     }
     else {
+        debugger;
         appliedText.style.display = 'none';
         couldNot.style.display = 'block'
+        couldNot.innerText = "Buy More Than 1500$"
     }
 })

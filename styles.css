@@ -17,28 +17,6 @@ body {
 .reduce-margin {
   margin-top: -5px;
 }
-.half-width {
-  background: #222436;
-  padding: 30px;
-  text-align: center;
-  display: none;
-}
-.generate-btn {
-  margin-top: 20px;
-  width: 180px;
-  padding: 50px;
-  border-radius: 50%;
-  border: 8px solid #39458c;
-  background-color: #495bc3;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-}
-.generate-btn:focus {
-  outline: none;
-  box-shadow: none;
-}
 .bold-line {
   border: 3px solid blue;
   border-radius: 5px;
@@ -55,4 +33,5 @@ body {
 .custom {
   display: none;
 }
+
 /* --------------------End---------------------- */ ;
